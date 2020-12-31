@@ -1,0 +1,10 @@
+.flexible{
+    display:flex;
+    display:-webkit-flex;
+    display:-moz-box;
+}
+.flex{
+    flex:1;
+    -webkit-flex:1;
+    -moz-box-flex:1;
+}

@@ -1,0 +1,6 @@
+export { default as Title } from "./Title"
+export { default as ParagraphTitle } from "./ParagraphTitle"
+export { default as Picture } from "./Picture"
+export { default as Paragraph } from "./Paragraph"
+export { default as DemoTitle } from "./DemoTitle"
+export { default as DemoParagraph } from "./DemoParagraph"
