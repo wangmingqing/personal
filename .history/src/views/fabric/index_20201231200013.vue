@@ -222,7 +222,7 @@ export default {
     save(){
       // 保存
       this.exchangeToJSON()
-    },
+    }
     exchangeToJSON() {
       // 序列化
       localStorage.setItem('image', JSON.stringify(this.canvas.toJSON()))

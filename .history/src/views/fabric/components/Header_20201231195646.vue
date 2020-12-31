@@ -5,7 +5,7 @@
       <span class="firmname">游准备科技有限公司</span>
       <a href="javascript:;" class="btn-reply disabled" title="后退"><i class="fa fa-rotate-left"></i></a>
       <a href="javascript:;" class="btn-forward" title="前进"><i class="fa fa-rotate-right"></i></a>
-      <a href="javascript:;" class="btn-save" title="保存" @click="save"><i class="fa fa-save"></i></a>
+      <a href="javascript:;" class="btn-save" title="保存"><i class="fa fa-save"></i></a>
     </div>
     <div class="fr">
       <a href="javascript:;" class="btn-review" @click="preview">
@@ -30,10 +30,6 @@
       download() {
         // 下载
         this.$emit('download')
-      },
-      save() {
-        // 保存
-        this.$emit('save')
       }
     }
   }
