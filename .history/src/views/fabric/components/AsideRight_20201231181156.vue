@@ -50,13 +50,6 @@
             </div>
           </div>
         </div>
-        <!-- 设置图层 -->
-        <div class="set-Player">
-          <div class="col">锁定</div>
-          <div class="col">排序</div>
-          <div class="col" @click="copyPlayer">复制</div>
-          <div class="col" @click="delPlayer">删除</div>
-        </div>
       </div>
       <div class="basic-info" v-else>
         <p style="font-size: 12px;color: #999;padding: 20px 0 2px;line-height: 1.4;text-align: justify;">
@@ -160,12 +153,6 @@ export default {
     },
     selectFontEditor(type) {
       this.$emit('setFontEditor', type)
-    },
-    copyPlayer() {
-      this.$emit('copyPlayer')
-    },
-    delPlayer() {
-      this.$emit('delPlayer')
     }
   }
 }
@@ -342,38 +329,4 @@ export default {
   padding: 5px 0;
 }
 .set-fontEditor .editor-box .col{padding: 5px 0;float:left;width:20%;font-size:14px;color:#333;text-align:center;}
-
-.set-Player{
-  position:absolute;
-  width:100%;
-  bottom:0;
-  left: 0;
-  background: #fff;
-  z-index: 20;
-  padding: 22px 24px;
-  border-top: 1px solid #e4e9ee;
-}
-.set-Player .col{
-  width:25%;
-  float:left;
-  text-align:center;
-  font-size: 14px;
-  color: #333;
-  position:relative;
-  cursor: pointer;
-}
-.set-Player .col:hover{color:#ff3c3c;}
-.set-Player .col:after{
-  content: "";
-  display: block;
-  width:0;
-  height:100%;
-  border-left:1px solid #ccc;
-  position:absolute;
-  top:0;
-  left:0;
-  z-index:1;
-  transform:scaleY(0.5)
-}
-.set-Player .col:first-child:after{border-left:none;}
 </style>

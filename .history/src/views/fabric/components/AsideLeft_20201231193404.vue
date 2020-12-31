@@ -155,7 +155,7 @@ export default {
     },
     selectBackground(url) {
       this.$emit('setBackgroundImage',url)
-    },
+    }
     selectMaterial(url) {
       this.$emit('selectMaterialImage',url)
     }

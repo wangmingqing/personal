@@ -54,8 +54,8 @@
         <div class="set-Player">
           <div class="col">锁定</div>
           <div class="col">排序</div>
-          <div class="col" @click="copyPlayer">复制</div>
-          <div class="col" @click="delPlayer">删除</div>
+          <div class="col">复制</div>
+          <div class="col">删除</div>
         </div>
       </div>
       <div class="basic-info" v-else>
@@ -160,12 +160,6 @@ export default {
     },
     selectFontEditor(type) {
       this.$emit('setFontEditor', type)
-    },
-    copyPlayer() {
-      this.$emit('copyPlayer')
-    },
-    delPlayer() {
-      this.$emit('delPlayer')
     }
   }
 }

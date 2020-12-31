@@ -49,7 +49,7 @@
             </div>
           </el-col>
           <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material5.png'))">
+            <div class="item" @click="selectBackground(require('../../../assets/material5.png'))">
               <img src="../../../assets/material5.png" alt="">
             </div>
           </el-col>
@@ -155,9 +155,6 @@ export default {
     },
     selectBackground(url) {
       this.$emit('setBackgroundImage',url)
-    },
-    selectMaterial(url) {
-      this.$emit('selectMaterialImage',url)
     }
   }
 }

@@ -108,12 +108,12 @@ export default {
       }
     },
     selectMaterialImage(url) {
-      this.setImage(url)
+
     },
-    setImage(url) {
-      fabric.Image.fromURL(url, img => {
-        this.canvas.add(img).setActiveObject(img)
-      })
+    setImage(){
+      var image = fabric.Image.fromURL(imgUrl, img => {
+        this.canvas.add(img).setActiveObject(image)
+      }
     },
     setFont(data) {
       // 获取绘制文字参数

@@ -1,12 +1,7 @@
 <template>
   <div>
     <Header @preview="preview" @download="download"/>
-    <AsideLeft
-      @setFont="setFont"
-      @setBackgroundImage="setBackgroundImage"
-      @selectMaterialImage="selectMaterialImage"
-      :canvasWidth="canvasWidth"
-    />
+    <AsideLeft @setFont="setFont" @setBackgroundImage="setBackgroundImage" :canvasWidth="canvasWidth"/>
     <div class="fabric-container">
       <div class="container">
         <canvas id="canvas"></canvas>
@@ -27,7 +22,7 @@
       width="80%"
       center>
       <el-row>
-        <el-col :span="18" style="border-right:1px solid #eee;">
+        <el-col :span="18">
           <img :src="previewImage" alt="" style="display:block;width:375px;margin:0 auto">
         </el-col>
         <el-col :span="6"></el-col>
@@ -106,14 +101,6 @@ export default {
           this.canvas.renderAll()
         })
       }
-    },
-    selectMaterialImage(url) {
-      this.setImage(url)
-    },
-    setImage(url) {
-      fabric.Image.fromURL(url, img => {
-        this.canvas.add(img).setActiveObject(img)
-      })
     },
     setFont(data) {
       // 获取绘制文字参数

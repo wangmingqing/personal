@@ -5,13 +5,14 @@
       <span class="firmname">游准备科技有限公司</span>
       <a href="javascript:;" class="btn-reply disabled" title="后退"><i class="fa fa-rotate-left"></i></a>
       <a href="javascript:;" class="btn-forward" title="前进"><i class="fa fa-rotate-right"></i></a>
+      <a href="javascript:;" class="btn-del" title="删除图层"><i class="fa fa-close"></i></a>
     </div>
     <div class="fr">
-      <a href="javascript:;" class="btn-review" @click="preview">
+      <a href="javascript:;" class="btn-review">
         <i class="fa fa-eye"></i>
         预览
       </a>
-      <a href="javascript:;" class="btn-download" @click="download">
+      <a href="javascript:;" class="btn-download">
         <i class="fa fa-cloud-download"></i>
         <span>无水印下载</span>
       </a>
@@ -20,17 +21,7 @@
 </template>
 <script>
   export default {
-    name: 'Header',
-    methods: {
-      preview() {
-        // 预览
-        this.$emit('preview')
-      },
-      download() {
-        // 下载
-        this.$emit('download')
-      }
-    }
+    name: 'Header'
   }
 </script>
 <style scoped>
@@ -57,6 +48,7 @@
 .header .firmname{display:inline-block;font-size:18px;font-weight:bold;color:#666;margin-right:40px;}
 .header .btn-reply,
 .header .btn-forward,
+.header .btn-del,
 .header .btn-review{
   display:inline-block;
   padding:0 20px;

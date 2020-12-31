@@ -26,35 +26,7 @@
           </div>
         </div>
       </div>
-      <div class="material-wrapper" v-if="asideType === 'material'">
-        <el-row>
-          <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material1.png'))">
-              <img src="../../../assets/material1.png" alt="">
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material2.png'))">
-              <img src="../../../assets/material2.png" alt="">
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material3.png'))">
-              <img src="../../../assets/material3.png" alt="">
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material4.png'))">
-              <img src="../../../assets/material4.png" alt="">
-            </div>
-          </el-col>
-          <el-col :span="12">
-            <div class="item" @click="selectMaterial(require('../../../assets/material5.png'))">
-              <img src="../../../assets/material5.png" alt="">
-            </div>
-          </el-col>
-        </el-row>
-      </div>
+      <div></div>
       <div class="background-wrapper" v-if="asideType === 'background'">
         <el-row>
           <el-col :span="12">
@@ -128,11 +100,11 @@ export default {
         textAlign: 'center',
         width:750,
         fontFamily: 'Microsoft YaHei',
-        fontWeight: 'normal',
-        fontSize: 14,
+        fontWeight: '400',
+        fontSize: '40',
         fontStyle: 'normal',
         underline: false,
-        fill: 'rgba(255, 0, 0, 1)'
+        fill: 'rgba(255, 255, 255, 1)'
       }
     }
   },
@@ -155,9 +127,6 @@ export default {
     },
     selectBackground(url) {
       this.$emit('setBackgroundImage',url)
-    },
-    selectMaterial(url) {
-      this.$emit('selectMaterialImage',url)
     }
   }
 }
@@ -289,12 +258,4 @@ export default {
 .background-wrapper{padding:5px;}
 .background-wrapper .item{padding:5px;}
 .background-wrapper img{display:block;width:100%;}
-
-.material-wrapper{padding:5px;}
-.material-wrapper .item{padding:5px;}
-.material-wrapper img{display:block;width:100%;background-color:#f7f7f7;border-radius:4px;}
-.material-wrapper img:hover{
-  box-shadow: 0 0 5px #ccc;
-  -webkit-box-shadow: 0 0 5px #ccc;
-}
 </style>

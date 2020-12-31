@@ -1,12 +1,7 @@
 <template>
   <div>
-    <Header @preview="preview" @download="download"/>
-    <AsideLeft
-      @setFont="setFont"
-      @setBackgroundImage="setBackgroundImage"
-      @selectMaterialImage="selectMaterialImage"
-      :canvasWidth="canvasWidth"
-    />
+    <Header/>
+    <AsideLeft @setFont="setFont" @setBackgroundImage="setBackgroundImage" :canvasWidth="canvasWidth"/>
     <div class="fabric-container">
       <div class="container">
         <canvas id="canvas"></canvas>
@@ -21,18 +16,6 @@
       @copyPlayer="copyPlayer"
       @delPlayer="delPlayer"
     />
-    <el-dialog
-      title="预览图片"
-      :visible.sync="previewImageDialog"
-      width="80%"
-      center>
-      <el-row>
-        <el-col :span="18" style="border-right:1px solid #eee;">
-          <img :src="previewImage" alt="" style="display:block;width:375px;margin:0 auto">
-        </el-col>
-        <el-col :span="6"></el-col>
-      </el-row>
-    </el-dialog>
   </div>
 </template>
 
@@ -53,8 +36,6 @@ export default {
       canvas: null,
       canvasWidth: 750,
       designType: '', // 设置类型 默认空  text设置文本 image设置图片
-      previewImageDialog: false, // 预览图片窗口开关
-      previewImage: '' // 预览图片地址
     }
   },
   mounted() {
@@ -106,14 +87,6 @@ export default {
           this.canvas.renderAll()
         })
       }
-    },
-    selectMaterialImage(url) {
-      this.setImage(url)
-    },
-    setImage(url) {
-      fabric.Image.fromURL(url, img => {
-        this.canvas.add(img).setActiveObject(img)
-      })
     },
     setFont(data) {
       // 获取绘制文字参数
@@ -200,24 +173,6 @@ export default {
     delPlayer() {
       // 删除图层
       this.canvas.remove(this.canvas.getActiveObject())
-    },
-    preview() {
-      // 预览
-      this.previewImageDialog = true
-      this.previewImage = this.canvas.toDataURL('image/jpg')
-    },
-    download() {
-      // 下载
-      var type = 'jpg'
-      var imgURL = this.canvas.toDataURL('image/jpg')
-      var link = document.createElement('a')
-      var filename = 'download.' + type
-      link.download = filename
-      link.href = imgURL
-      link.dataset.downloadurl = ['image/jpg', link.download, link.href].join(':')
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
     },
     exchangeToFromJSON(json) {
       this.canvas.loadFromJSON(json)

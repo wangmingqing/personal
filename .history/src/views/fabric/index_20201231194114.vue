@@ -111,7 +111,7 @@ export default {
       this.setImage(url)
     },
     setImage(url) {
-      fabric.Image.fromURL(url, img => {
+      fabric.Image.fromURL(imgUrl, img => {
         this.canvas.add(img).setActiveObject(img)
       })
     },

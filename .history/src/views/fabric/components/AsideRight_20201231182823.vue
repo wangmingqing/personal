@@ -54,8 +54,8 @@
         <div class="set-Player">
           <div class="col">锁定</div>
           <div class="col">排序</div>
-          <div class="col" @click="copyPlayer">复制</div>
-          <div class="col" @click="delPlayer">删除</div>
+          <div class="col">复制</div>
+          <div class="col">删除</div>
         </div>
       </div>
       <div class="basic-info" v-else>
@@ -160,12 +160,6 @@ export default {
     },
     selectFontEditor(type) {
       this.$emit('setFontEditor', type)
-    },
-    copyPlayer() {
-      this.$emit('copyPlayer')
-    },
-    delPlayer() {
-      this.$emit('delPlayer')
     }
   }
 }
@@ -364,16 +358,14 @@ export default {
 }
 .set-Player .col:hover{color:#ff3c3c;}
 .set-Player .col:after{
-  content: "";
-  display: block;
+  content: '';
+  display: 'block';
   width:0;
-  height:100%;
-  border-left:1px solid #ccc;
+  height:0;
+  border-left:1px solid #eee;
   position:absolute;
   top:0;
   left:0;
-  z-index:1;
-  transform:scaleY(0.5)
+  transform: scaleY(0.5);
 }
-.set-Player .col:first-child:after{border-left:none;}
 </style>

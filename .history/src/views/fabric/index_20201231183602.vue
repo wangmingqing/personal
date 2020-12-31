@@ -1,12 +1,7 @@
 <template>
   <div>
-    <Header @preview="preview" @download="download"/>
-    <AsideLeft
-      @setFont="setFont"
-      @setBackgroundImage="setBackgroundImage"
-      @selectMaterialImage="selectMaterialImage"
-      :canvasWidth="canvasWidth"
-    />
+    <Header/>
+    <AsideLeft @setFont="setFont" @setBackgroundImage="setBackgroundImage" :canvasWidth="canvasWidth"/>
     <div class="fabric-container">
       <div class="container">
         <canvas id="canvas"></canvas>
@@ -18,21 +13,8 @@
       @setFontSize="setFontSize"
       @setFontColor="setFontColor"
       @setFontEditor="setFontEditor"
-      @copyPlayer="copyPlayer"
       @delPlayer="delPlayer"
     />
-    <el-dialog
-      title="预览图片"
-      :visible.sync="previewImageDialog"
-      width="80%"
-      center>
-      <el-row>
-        <el-col :span="18" style="border-right:1px solid #eee;">
-          <img :src="previewImage" alt="" style="display:block;width:375px;margin:0 auto">
-        </el-col>
-        <el-col :span="6"></el-col>
-      </el-row>
-    </el-dialog>
   </div>
 </template>
 
@@ -53,8 +35,6 @@ export default {
       canvas: null,
       canvasWidth: 750,
       designType: '', // 设置类型 默认空  text设置文本 image设置图片
-      previewImageDialog: false, // 预览图片窗口开关
-      previewImage: '' // 预览图片地址
     }
   },
   mounted() {
@@ -107,14 +87,6 @@ export default {
         })
       }
     },
-    selectMaterialImage(url) {
-      this.setImage(url)
-    },
-    setImage(url) {
-      fabric.Image.fromURL(url, img => {
-        this.canvas.add(img).setActiveObject(img)
-      })
-    },
     setFont(data) {
       // 获取绘制文字参数
       var textbox = new fabric.Textbox(data.text, data)
@@ -159,65 +131,10 @@ export default {
       }
       this.setFont(currentFontPlayer)
     },
-    copyPlayer() {
-      // 复制图层
-      this.copy()
-    },
-    paste(_clipboard){
-      // 粘贴图层
-      let canvas = this.canvas;
-      _clipboard.clone(function(clonedObj) {
-        canvas.discardActiveObject()
-        clonedObj.set({
-            left: clonedObj.left + 20,
-            top: clonedObj.top + 20,
-            evented: true,
-        })
-        if (clonedObj.type === 'activeSelection') {
-          // active selection needs a reference to the canvas.
-          clonedObj.canvas = canvas
-          clonedObj.forEachObject(function(obj) {
-            canvas.add(obj)
-          })
-          // this should solve the unselectability
-          clonedObj.setCoords()
-        } else {
-          canvas.add(clonedObj)
-        }
-        _clipboard.top += 20;
-        _clipboard.left += 20;
-        canvas.setActiveObject(clonedObj)
-      })
-    },
-    copy(){
-      // 复制图层
-      let canvas = this.canvas
-      var _self = this;
-      canvas.getActiveObject().clone(function(cloned){
-        _self.paste(cloned)
-      })
-    }, 
     delPlayer() {
       // 删除图层
+      console.log(11111111)
       this.canvas.remove(this.canvas.getActiveObject())
-    },
-    preview() {
-      // 预览
-      this.previewImageDialog = true
-      this.previewImage = this.canvas.toDataURL('image/jpg')
-    },
-    download() {
-      // 下载
-      var type = 'jpg'
-      var imgURL = this.canvas.toDataURL('image/jpg')
-      var link = document.createElement('a')
-      var filename = 'download.' + type
-      link.download = filename
-      link.href = imgURL
-      link.dataset.downloadurl = ['image/jpg', link.download, link.href].join(':')
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
     },
     exchangeToFromJSON(json) {
       this.canvas.loadFromJSON(json)
